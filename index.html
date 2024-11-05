@@ -45,13 +45,24 @@
             z-index: 1; /* Ensure overlay is above the image */
         }
 
+        .feedback-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0);
+            transition: background-color 0.5s ease;
+        }
+
         .content-logo {
             position: absolute;
             top: 10px;
             left: 10px;
-            width: 150px;
-            height: 150px;
-            z-index: 2; /* Ensure logo is above the overlay */
+            width: 100px;
+            height: auto;
+            z-index: 3; /* Ensure logo is above the overlay */
         }
 
         .button {
@@ -65,7 +76,7 @@
             color: black;
             font-weight: bold;
             font-size: 36px; /* Increase size for better visibility */
-            z-index: 2; /* Ensure buttons are above the overlay */
+            z-index: 4; /* Ensure buttons are above the overlay */
             cursor: pointer;
         }
 
@@ -86,7 +97,7 @@
             justify-content: space-between;
             background-color: white;
             padding: 10px 0;
-            z-index: 3; /* Ensure menu is above everything else */
+            z-index: 5; /* Ensure menu is above everything else */
             position: relative; /* Prevent it from being affected by absolute positioning */
         }
 
@@ -112,6 +123,7 @@
 <body>
     <div class="content">
         <div class="image-overlay"></div>
+        <div class="feedback-overlay" id="feedbackOverlay"></div>
         <img src="r1.svg" alt="Content Logo" class="content-logo" id="contentLogo">
         <img src="test.webp" alt="Main Content" class="main-image" id="mainImage">
         <div class="button green" id="dislikeButton">&times;</div> <!-- Changed G to an X mark -->
@@ -136,14 +148,18 @@
     </div>
     <script>
         const images = [
-            'test.jpg',
+            'test.webp',
             'test2.avif',
-            'test3.jpg'
+            'test3.jpg',
+            'test4.webp',
+            'test5.jpg'
         ];
         const logos = [
             'r1.svg',
             'r2.png',
-            'r3.png'
+            'r3.png',
+            'r4.avif',
+            'r5.png'
         ];
         let currentIndex = 0;
 
@@ -151,24 +167,25 @@
         const contentLogo = document.getElementById('contentLogo');
         const dislikeButton = document.getElementById('dislikeButton');
         const likeButton = document.getElementById('likeButton');
+        const feedbackOverlay = document.getElementById('feedbackOverlay');
 
-        function showNextImage(direction) {
-            // Add swipe effect
+        function showNextImage(direction, feedbackColor) {
+            feedbackOverlay.style.backgroundColor = feedbackColor;
             mainImage.style.transform = direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)';
             mainImage.style.opacity = '0';
 
-            // Wait for the animation to complete before showing the next image
             setTimeout(() => {
                 currentIndex = (currentIndex + 1) % images.length;
                 mainImage.src = images[currentIndex];
                 contentLogo.src = logos[currentIndex];
+                feedbackOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
                 mainImage.style.transform = 'translateX(0)';
                 mainImage.style.opacity = '1';
             }, 500);
         }
 
-        dislikeButton.addEventListener('click', () => showNextImage('left'));
-        likeButton.addEventListener('click', () => showNextImage('right'));
+        dislikeButton.addEventListener('click', () => showNextImage('left', 'rgba(255, 0, 0, 0.5)'));
+        likeButton.addEventListener('click', () => showNextImage('right', 'rgba(0, 255, 0, 0.5)'));
     </script>
 </body>
 </html>
