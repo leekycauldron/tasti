@@ -3,7 +3,7 @@
     "short_name": "Bryson",
     "theme_color": "#ffdd56",
     "background_color": "#ffffff",
-    "display": "standalone",
+    "display": "fullscreen",
     "scope": "/",
     "start_url": "https://rctasti.netlify.app/",
     "description": "An app that helps users find their favourite restaurants",
