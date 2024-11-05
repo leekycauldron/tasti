@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <title>Tasti</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .content {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .main-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .image-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1; /* Ensure overlay is above the image */
+        }
+
+        .content-logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px;
+            height: 50px;
+            z-index: 2; /* Ensure logo is above the overlay */
+        }
+
+        .button {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-weight: bold;
+            font-size: 36px; /* Increase size for better visibility */
+            z-index: 2; /* Ensure buttons are above the overlay */
+            cursor: pointer;
+        }
+
+        .green {
+            background-color: #ffdd56;
+            bottom: 10%;
+            left: 10%;
+        }
+
+        .blue {
+            background-color: #ffdd56;
+            bottom: 10%;
+            right: 10%;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            padding: 10px 0;
+            z-index: 3; /* Ensure menu is above everything else */
+            position: relative; /* Prevent it from being affected by absolute positioning */
+        }
+
+        .menu button {
+            flex: 1;
+            height: 50px;
+            background-color: #ffdd56;
+            border: none;
+            margin: 0 2px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="image-overlay"></div>
+        <img src="r1.svg" alt="Content Logo" class="content-logo" id="contentLogo">
+        <img src="test.webp" alt="Main Content" class="main-image" id="mainImage">
+        <div class="button green" id="dislikeButton">&times;</div> <!-- Changed G to an X mark -->
+        <div class="button blue" id="likeButton">&#10003;</div> <!-- Changed B to a check mark -->
+    </div>
+    <div class="menu">
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg>
+        </button>
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm3 4h12v2H6V7zm-3 4h18v2H3v-2zm3 4h12v2H6v-2zm-3 4h18v2H3v-2z"/></svg>
+        </button>
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        </button>
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </button>
+        <button>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.66.07-1s-.03-.68-.07-1l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1a8.12 8.12 0 0 0-1.86-1.08l-.38-2.65a.5.5 0 0 0-.5-.42h-4a.5.5 0 0 0-.5.42l-.38 2.66c-.7.28-1.35.63-1.86 1.07l-2.49-1a.5.5 0 0 0-.61.22l-2 3.46c-.12.22-.07.49.12.64l2.11 1.65c-.05.32-.08.66-.08 1s.03.68.08 1L3.51 14.6a.5.5 0 0 0-.12.64l2 3.46c.12.22.39.29.61.22l2.49-1c.52.44 1.17.79 1.86 1.08l.38 2.65c.05.28.25.42.5.42h4c.25 0 .45-.14.5-.42l-.38-2.65c.7-.28 1.35-.63 1.86-1.08l2.49 1a.5.5 0 0 0 .61-.22l2-3.46a.5.5 0 0 0-.12-.64l-2.11-1.63zm-7.43 3.02c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+        </button>
+    </div>
+    <script>
+        const images = [
+            'test.jpg',
+            'test2.jpg',
+            'test3.jpg'
+        ];
+        const logos = [
+            'r1.svg',
+            'logo2.jpg',
+            'logo3.jpg'
+        ];
+        let currentIndex = 0;
+
+        const mainImage = document.getElementById('mainImage');
+        const contentLogo = document.getElementById('contentLogo');
+        const dislikeButton = document.getElementById('dislikeButton');
+        const likeButton = document.getElementById('likeButton');
+
+        function showNextImage(direction) {
+            // Add swipe effect
+            mainImage.style.transform = direction === 'left' ? 'translateX(-100%)' : 'translateX(100%)';
+            mainImage.style.opacity = '0';
+
+            // Wait for the animation to complete before showing the next image
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                mainImage.src = images[currentIndex];
+                contentLogo.src = logos[currentIndex];
+                mainImage.style.transform = 'translateX(0)';
+                mainImage.style.opacity = '1';
+            }, 500);
+        }
+
+        dislikeButton.addEventListener('click', () => showNextImage('left'));
+        likeButton.addEventListener('click', () => showNextImage('right'));
+    </script>
+</body>
+</html>
