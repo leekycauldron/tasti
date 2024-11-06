@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Tasti</title>
     <style>
+        /* Styles unchanged */
         body {
             margin: 0;
             padding: 0;
@@ -38,21 +39,13 @@
             transition: transform 0.5s ease, opacity 0.5s ease;
         }
 
-        .image-overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-
-        .feedback-overlay {
+        .image-overlay, .feedback-overlay {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            z-index: 2;
+            z-index: 1;
             background-color: rgba(0, 0, 0, 0);
             transition: background-color 0.5s ease;
         }
@@ -122,6 +115,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
         }
 
         .menu svg {
@@ -145,19 +139,20 @@
         <div class="button blue" id="likeButton">&#10003;</div>
     </div>
     <div class="menu">
-        <button>
+        <button onclick="window.location.href='map.html'">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg>
         </button>
-        <button>
+        <button onclick="window.location.href='discounts.html'">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm3 4h12v2H6V7zm-3 4h18v2H3v-2zm3 4h12v2H6v-2zm-3 4h18v2H3v-2z"/></svg>
         </button>
-        <button>
+        <button onclick="window.location.href='index.html'">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
         </button>
-        <button>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <button onclick="window.location.href='videos.html'">
+            <!-- Updated to video icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><path d="M1 5h16v14H1z"/></svg>
         </button>
-        <button>
+        <button onclick="window.location.href='settings.html'">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.66.07-1s-.03-.68-.07-1l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1a8.12 8.12 0 0 0-1.86-1.08l-.38-2.65a.5.5 0 0 0-.5-.42h-4a.5.5 0 0 0-.5.42l-.38 2.66c-.7.28-1.35.63-1.86 1.07l-2.49-1a.5.5 0 0 0-.61.22l-2 3.46c-.12.22-.07.49.12.64l2.11 1.65c-.05.32-.08.66-.08 1s.03.68.08 1L3.51 14.6a.5.5 0 0 0-.12.64l2 3.46c.12.22.39.29.61.22l2.49-1c.52.44 1.17.79 1.86 1.08l.38 2.65c.05.28.25.42.5.42h4c.25 0 .45-.14.5-.42l-.38-2.65c.7-.28 1.35-.63 1.86-1.08l2.49 1a.5.5 0 0 0 .61-.22l2-3.46a.5.5 0 0 0-.12-.64l-2.11-1.63zm-7.43 3.02c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
         </button>
     </div>
@@ -176,8 +171,7 @@
             ['test9.jpg', 'r9.png', `<span style="font-size: ${fontSize}; font-weight: bold;">Korean Grill House</span><br>1.5km away<br>Korean`],
             ['test10.jpg', 'r10.png', `<span style="font-size: ${fontSize}; font-weight: bold;">Fusaro's Italian Catering</span><br>600m away<br>Italian`],
             ['test11.jpg', 'r11.jpg', `<span style="font-size: ${fontSize}; font-weight: bold;">Juicy Dumpling</span><br>350m away<br>Chinese`],
-            ['test12.webp', 'r12.webp', `<span style="font-size: ${fontSize}; font-weight: bold;">Swatow Restaurant</span><br>500m away<br>Chinese`],
-            
+            ['test12.webp', 'r12.webp', `<span style="font-size: ${fontSize}; font-weight: bold;">Swatow Restaurant</span><br>500m away<br>Chinese`]
         ];
 
         function shuffleArray(array) {
