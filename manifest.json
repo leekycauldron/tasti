@@ -3,7 +3,7 @@
     "short_name": "Bryson",
     "theme_color": "#ffdd56",
     "background_color": "#ffffff",
-    "display": "fullscreen",
+    "display": "standalone",
     "scope": "/",
     "start_url": "./index.html?source=pwa",
     "description": "An app that helps users find their favourite restaurants",
