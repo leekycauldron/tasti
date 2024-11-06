@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="logo.png">
-    <link rel="apple-touch-icon" sizes="128x128" href="logo.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="apple-logo.png">
     <link rel="manifest" href="/static/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -147,20 +147,37 @@
         </button>
     </div>
     <script>
-        const images = [
-            'test.webp',
-            'test2.avif',
-            'test3.jpg',
-            'test4.webp',
-            'test5.jpg'
+        // Combined array of image-logo pairs
+        let imageLogoPairs = [
+            ['test.webp', 'r1.svg'],
+            ['test2.avif', 'r2.png'],
+            ['test3.jpg', 'r3.png'],
+            ['test4.webp', 'r4.avif'],
+            ['test5.jpg', 'r5.png'],
+            ['test6.jpg', 'r6.jpg'],
+            ['test7.jpg', 'r7.svg'],
+            ['test8.png', 'r8.png'],
+            ['test9.jpg', 'r9.png'],
+            ['test10.jpg', 'r10.png'],
+            ['test11.jpg', 'r11.jpg'],
+            ['test12.webp', 'r12.webp']
         ];
-        const logos = [
-            'r1.svg',
-            'r2.png',
-            'r3.png',
-            'r4.avif',
-            'r5.png'
-        ];
+
+        // Function to shuffle an array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Shuffle the image-logo pairs
+        shuffleArray(imageLogoPairs);
+
+        // Split the shuffled pairs back into separate arrays
+        const images = imageLogoPairs.map(pair => pair[0]);
+        const logos = imageLogoPairs.map(pair => pair[1]);
+
         let currentIndex = 0;
 
         const mainImage = document.getElementById('mainImage');
