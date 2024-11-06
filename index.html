@@ -17,6 +17,7 @@
             flex-direction: column;
             height: 100vh;
             overflow: hidden;
+            font-family: Arial, sans-serif;
         }
         
         .content {
@@ -42,7 +43,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1; /* Ensure overlay is above the image */
+            z-index: 1;
         }
 
         .feedback-overlay {
@@ -62,7 +63,17 @@
             left: 10px;
             width: 100px;
             height: auto;
-            z-index: 3; /* Ensure logo is above the overlay */
+            z-index: 3;
+        }
+
+        .description {
+            position: absolute;
+            bottom: 25%;
+            left: 10%;
+            color: white;
+            z-index: 4;
+            font-size: 18px;
+            line-height: 1.5;
         }
 
         .button {
@@ -75,8 +86,8 @@
             align-items: center;
             color: black;
             font-weight: bold;
-            font-size: 36px; /* Increase size for better visibility */
-            z-index: 4; /* Ensure buttons are above the overlay */
+            font-size: 36px;
+            z-index: 4;
             cursor: pointer;
         }
 
@@ -97,8 +108,8 @@
             justify-content: space-between;
             background-color: white;
             padding: 10px 0;
-            z-index: 5; /* Ensure menu is above everything else */
-            position: relative; /* Prevent it from being affected by absolute positioning */
+            z-index: 5;
+            position: relative;
         }
 
         .menu button {
@@ -124,10 +135,14 @@
     <div class="content">
         <div class="image-overlay"></div>
         <div class="feedback-overlay" id="feedbackOverlay"></div>
+        <!-- Hard-coded initial content for "Eataly" -->
         <img src="r1.svg" alt="Content Logo" class="content-logo" id="contentLogo">
         <img src="test.webp" alt="Main Content" class="main-image" id="mainImage">
-        <div class="button green" id="dislikeButton">&times;</div> <!-- Changed G to an X mark -->
-        <div class="button blue" id="likeButton">&#10003;</div> <!-- Changed B to a check mark -->
+        <div class="description" id="description">
+            <span style="font-size: 28px; font-weight: bold;">Eataly</span><br>550m away<br>Italian
+        </div>
+        <div class="button green" id="dislikeButton">&times;</div>
+        <div class="button blue" id="likeButton">&#10003;</div>
     </div>
     <div class="menu">
         <button>
@@ -147,23 +162,24 @@
         </button>
     </div>
     <script>
-        // Combined array of image-logo pairs
-        let imageLogoPairs = [
-            ['test.webp', 'r1.svg'],
-            ['test2.avif', 'r2.png'],
-            ['test3.jpg', 'r3.png'],
-            ['test4.webp', 'r4.avif'],
-            ['test5.jpg', 'r5.png'],
-            ['test6.jpg', 'r6.jpg'],
-            ['test7.jpg', 'r7.svg'],
-            ['test8.png', 'r8.png'],
-            ['test9.jpg', 'r9.png'],
-            ['test10.jpg', 'r10.png'],
-            ['test11.jpg', 'r11.jpg'],
-            ['test12.webp', 'r12.webp']
+        const fontSize = '28px';
+
+        let imageLogoDescriptionPairs = [
+            ['test.webp', 'r1.svg', `<span style="font-size: ${fontSize}; font-weight: bold;">Eataly</span><br>550m away<br>Italian`],
+            ['test2.avif', 'r2.png', `<span style="font-size: ${fontSize}; font-weight: bold;">Joni</span><br>300m away<br>Steakhouse`],
+            ['test3.jpg', 'r3.png', `<span style="font-size: ${fontSize}; font-weight: bold;">Top Gun Burgers</span><br>1.2km away<br>American`],
+            ['test4.webp', 'r4.avif', `<span style="font-size: ${fontSize}; font-weight: bold;">Trattoria Nervosa</span><br>400m away<br>Italian`],
+            ['test5.jpg', 'r5.png', `<span style="font-size: ${fontSize}; font-weight: bold;">Gyubee Japanese Grill</span><br>700m away<br>Japanese`],
+            ['test6.jpg', 'r6.jpg', `<span style="font-size: ${fontSize}; font-weight: bold;">Piano Piano</span><br>800m away<br>Italian`],
+            ['test7.jpg', 'r7.svg', `<span style="font-size: ${fontSize}; font-weight: bold;">BLU Ristorante</span><br>950m away<br>Italian`],
+            ['test8.png', 'r8.png', `<span style="font-size: ${fontSize}; font-weight: bold;">Le Petit Chef</span><br>200m away<br>French`],
+            ['test9.jpg', 'r9.png', `<span style="font-size: ${fontSize}; font-weight: bold;">Korean Grill House</span><br>1.5km away<br>Korean`],
+            ['test10.jpg', 'r10.png', `<span style="font-size: ${fontSize}; font-weight: bold;">Fusaro's Italian Catering</span><br>600m away<br>Italian`],
+            ['test11.jpg', 'r11.jpg', `<span style="font-size: ${fontSize}; font-weight: bold;">Juicy Dumpling</span><br>350m away<br>Chinese`],
+            ['test12.webp', 'r12.webp', `<span style="font-size: ${fontSize}; font-weight: bold;">Swatow Restaurant</span><br>500m away<br>Chinese`],
+            
         ];
 
-        // Function to shuffle an array
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -171,17 +187,17 @@
             }
         }
 
-        // Shuffle the image-logo pairs
-        shuffleArray(imageLogoPairs);
+        shuffleArray(imageLogoDescriptionPairs);
 
-        // Split the shuffled pairs back into separate arrays
-        const images = imageLogoPairs.map(pair => pair[0]);
-        const logos = imageLogoPairs.map(pair => pair[1]);
+        const images = imageLogoDescriptionPairs.map(pair => pair[0]);
+        const logos = imageLogoDescriptionPairs.map(pair => pair[1]);
+        const descriptions = imageLogoDescriptionPairs.map(pair => pair[2]);
 
         let currentIndex = 0;
 
         const mainImage = document.getElementById('mainImage');
         const contentLogo = document.getElementById('contentLogo');
+        const description = document.getElementById('description');
         const dislikeButton = document.getElementById('dislikeButton');
         const likeButton = document.getElementById('likeButton');
         const feedbackOverlay = document.getElementById('feedbackOverlay');
@@ -195,6 +211,7 @@
                 currentIndex = (currentIndex + 1) % images.length;
                 mainImage.src = images[currentIndex];
                 contentLogo.src = logos[currentIndex];
+                description.innerHTML = descriptions[currentIndex];
                 feedbackOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';
                 mainImage.style.transform = 'translateX(0)';
                 mainImage.style.opacity = '1';
