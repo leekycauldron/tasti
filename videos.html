@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="apple-logo.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ffdd56">
+    <title>Tasti - Videos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        .video-container {
+            width: 90%;
+            max-width: 500px;
+            height: 80%;
+            position: relative;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            padding: 10px 0;
+            z-index: 5;
+            position: relative;
+        }
+
+        .menu button {
+            flex: 1;
+            height: 50px;
+            background-color: #ffdd56;
+            border: none;
+            margin: 0 2px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .menu svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="video-container" id="videoContainer">
+            <video id="videoPlayer" autoplay muted loop></video>
+        </div>
+    </div>
+
+    <div class="menu">
+        <button onclick="window.location.href='map.html?source=pwa'">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/>
+            </svg>
+        </button>
+        <button onclick="window.location.href='discounts.html?source=pwa'">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M3 3h18v2H3V3zm3 4h12v2H6V7zm-3 4h18v2H3v-2zm3 4h12v2H6V7zm-3 4h18v2H3v-2z"/>
+            </svg>
+        </button>
+        <button onclick="window.location.href='index.html?source=pwa'">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+        </button>
+        <button onclick="window.location.href='videos.html?source=pwa'">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M23 7l-7 5 7 5V7z"/>
+                <path d="M1 5h16v14H1z"/>
+            </svg>
+        </button>
+        <button onclick="window.location.href='settings.html?source=pwa'">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M19.43 12.98c.04-.32.07-.66.07-1s-.03-.68-.07-1l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1a8.12 8.12 0 0 0-1.86-1.08l-.38-2.65a.5.5 0 0 0-.5-.42h-4a.5.5 0 0 0-.5.42l-.38 2.66c-.7.28-1.35.63-1.86 1.07l-2.49-1a.5.5 0 0 0-.61.22l-2 3.46c-.12.22-.07.49.12.64l2.11 1.65c-.05.32-.08.66-.08 1s.03.68.08 1L3.51 14.6a.5.5 0 0 0-.12.64l2 3.46c.12.22.39.29.61.22l2.49-1c.52.44 1.17.79 1.86 1.08l.38 2.65c.05.28.25.42.5.42h4c.25 0 .45-.14.5-.42l-.38-2.65c.7-.28 1.35-.63 1.86-1.08l2.49 1a.5.5 0 0 0 .61-.22l2-3.46a.5.5 0 0 0-.12-.64l-2.11-1.63zm-7.43 3.02c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        const videos = [
+            'videos/video1.mp4', 'videos/video2.mp4', 'videos/video3.mp4',
+            'videos/video4.mp4', 'videos/video5.mp4', 'videos/video6.mp4',
+            'videos/video7.mp4', 'videos/video8.mp4', 'videos/video9.mp4',
+            'videos/video10.mp4', 'videos/video11.mp4', 'videos/video12.mp4',
+            'videos/video13.mp4', 'videos/video14.mp4', 'videos/video15.mp4',
+            'videos/video16.mp4', 'videos/video17.mp4'
+        ];
+
+        let currentVideoIndex = 0;
+
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoContainer = document.getElementById('videoContainer');
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        shuffleArray(videos);
+
+        videoPlayer.src = videos[currentVideoIndex];
+
+        function playNextVideo() {
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+            videoPlayer.src = videos[currentVideoIndex];
+            videoPlayer.play();
+        }
+
+        function playPreviousVideo() {
+            currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+            videoPlayer.src = videos[currentVideoIndex];
+            videoPlayer.play();
+        }
+
+        function animateSwipe(direction) {
+            videoContainer.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+            videoContainer.style.transform = direction === "up" ? "translateY(-100%)" : "translateY(100%)";
+            videoContainer.style.opacity = "0";
+        }
+
+        function resetSwipe() {
+            videoContainer.style.transition = "none";
+            videoContainer.style.transform = "translateY(0)";
+            videoContainer.style.opacity = "1";
+        }
+
+        let startY;
+
+        videoContainer.addEventListener('touchstart', (event) => {
+            startY = event.touches[0].clientY;
+        });
+
+        videoContainer.addEventListener('touchend', (event) => {
+            const endY = event.changedTouches[0].clientY;
+            const deltaY = startY - endY;
+
+            if (deltaY > 50) {
+                animateSwipe("up");
+                setTimeout(() => {
+                    playNextVideo();
+                    resetSwipe();
+                }, 500);
+            } else if (deltaY < -50) {
+                animateSwipe("down");
+                setTimeout(() => {
+                    playPreviousVideo();
+                    resetSwipe();
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>
