@@ -4,10 +4,8 @@
     "theme_color": "#ffdd56",
     "background_color": "#ffffff",
     "display": "standalone",
-    "scope": "/",
-    "start_url": "/?source=pwa",
     "description": "An app that helps users find their favourite restaurants",
-    "orientation": "any",
+    "orientation": "portrait-primary",
     "icons": [
         {
             "src": "https://rctasti.netlify.app/apple-logo.png",
