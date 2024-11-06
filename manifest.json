@@ -3,7 +3,7 @@
     "short_name": "Tasti",
     "theme_color": "#ffdd56",
     "background_color": "#000000",
-    "display": "fullscreen",
+    "display": "standalone",
     "scope": "/",
     "start_url": "./index.html?source=pwa",
     "description": "An app that helps users find their favourite restaurants",
@@ -11,7 +11,7 @@
     "icons": [
         {
             "src": "https://rctasti.netlify.app/apple-logo.png",
-            "sizes": "167x167"
+            "sizes": "200x200"
         }
     ]
 }
