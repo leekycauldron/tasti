@@ -1,8 +1,8 @@
 {
-    "name": "Bryson Lee-Kwen",
-    "short_name": "Bryson",
+    "name": "Tasti",
+    "short_name": "Tasti",
     "theme_color": "#ffdd56",
-    "background_color": "#ffffff",
+    "background_color": "#000000",
     "display": "fullscreen",
     "scope": "/",
     "start_url": "./index.html?source=pwa",
