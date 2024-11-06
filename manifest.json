@@ -3,9 +3,11 @@
     "short_name": "Bryson",
     "theme_color": "#ffdd56",
     "background_color": "#ffffff",
-    "display": "standalone",
+    "display": "fullscreen",
+    "scope": "/",
+    "start_url": "./index.html?source=pwa",
     "description": "An app that helps users find their favourite restaurants",
-    "orientation": "portrait-primary",
+    "orientation": "any",
     "icons": [
         {
             "src": "https://rctasti.netlify.app/apple-logo.png",
